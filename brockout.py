@@ -75,6 +75,9 @@ clock = pygame.time.Clock()
 brick_width = 5
 brick_height = 5
 
+font = pygame.font.Font(None, 36)
+text_surface = font.render('Press SPACE to start', True, white)
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -148,6 +151,8 @@ while running:
                          int(gnca_output[row, col, 1] * 255),
                          int(gnca_output[row, col, 2] * 255))
                 pygame.draw.rect(screen, color, pygame.Rect(brick_x, brick_y, brick_width, brick_height))
+    if not ball_in_motion:
+        screen.blit(text_surface, (10, 10))
 
     pygame.display.flip()
     clock.tick(60)
